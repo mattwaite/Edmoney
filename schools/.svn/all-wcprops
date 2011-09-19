@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/stimulustracker/!svn/ver/120/stimulustracker/schools
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/stimulustracker/!svn/ver/88/stimulustracker/schools/admin.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/stimulustracker/!svn/ver/120/stimulustracker/schools/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/stimulustracker/!svn/ver/1/stimulustracker/schools/__init__.py
+END
+tests.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/stimulustracker/!svn/ver/1/stimulustracker/schools/tests.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/stimulustracker/!svn/ver/119/stimulustracker/schools/models.py
+END
+search_indexes.py
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/stimulustracker/!svn/ver/75/stimulustracker/schools/search_indexes.py
+END

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load cache %}
+{% block title %}{{ flatpage.title }}{% endblock %}
+{% block content %}
+{% cache 600 flatpages flatpage.title %}
+<div id="cont" class="blog">
+	<div id="width">
+	<h1 id="blog_logo" class="autoMargin"><img src="http://hottype.s3.amazonaws.com/edmoney/images/blog_logo_498.png" alt="blog.EdMoney.org" title="EdMoney.org" /></h1>
+	<div id="main">
+		<div class="padding">
+		<div class="post">
+			<h2>{{ flatpage.title }}</h2>
+			<div class="content">
+				{% autoescape off %}<p>{{ flatpage.content }}</p>{% endautoescape %}
+			</div>
+		</div>
+		</div>
+	</div>
+{% include "includes/sidebar.html" %}
+</div>
+</div>
+{% endcache %}
+{% endblock %}

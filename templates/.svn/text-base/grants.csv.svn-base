@@ -1,0 +1,5 @@
+"award type","award id","short name","award date","recipient name","recipient_state","recipient_zipcode","amount awarded","amount disbursed","district funded","common core id number"
+{% for object in primary %}"Primary","{{ object.award_id }}","{{ object.clean_short_name }}","{{ object.award_date }}","{{ object.recipient_name }}","{{ object.recipient_state }}","{{ object.recipient_zipcode }}",{{ object.amount_awarded }},{{ object.amount_disbursed }},"",""
+{% endfor %}
+{% for object in secondary %}"Secondary","{{ object.award_id }}","{{ object.primary_award.clean_short_name }}","{{ object.award_date }}","{{ object.recipient_name }}","{{ object.recipient_state }}","{{ object.recipient_zipcode }}",{{ object.amount_awarded }},{{ object.amount_disbursed }},"{{ object.district_funded|default_if_none:"" }}","{{ object.district_funded.district_id }}"
+{% endfor %}

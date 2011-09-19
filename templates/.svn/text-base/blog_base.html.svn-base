@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html>
+<head>
+	<title>{% block title %}{% endblock %} | EdMoney.org</title>
+	<link rel="stylesheet" href="http://hottype.s3.amazonaws.com/edmoney/scripts/reset.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="http://hottype.s3.amazonaws.com/edmoney/styles/edmoney.css" type="text/css" media="all" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+	<script type="text/javascript" src="http://hottype.s3.amazonaws.com/edmoney/scripts/jquery.defaultvalue-1.0.js"></script>
+	<script type="text/javascript" src="http://hottype.s3.amazonaws.com/edmoney/scripts/jquery.simplemodal-1.2.2.js"></script>
+	<script type="text/javascript" src="http://hottype.s3.amazonaws.com/edmoney/scripts/getMovie.js"></script>
+	<script type="text/javascript" src="http://hottype.s3.amazonaws.com/edmoney/scripts/setup.js"></script>
+	<script type="text/javascript">
+		$(document).ready(init);
+		
+		function init(){
+			$('h2').find('span').fadeTo(0, 0.01, function(){
+				$('h2').find('.blue').fadeTo(2000, 1, function(){
+				$('h2').find('.green').fadeTo(2000, 1);
+				$('#email').defaultValue('john.smith@gmail.com');
+			});
+			});
+			
+		}
+	</script>
+    <link rel="alternate" type="application/rss+xml" title="Edmoney.org Blog Feed" href="/feeds/blog/" /> 
+
+</head>
+<body>
+    <div id="cont" class="blog">
+	<div id="width">
+	<h1 id="blog_logo" class="autoMargin"><img src="http://hottype.s3.amazonaws.com/edmoney/images/logo_384.png" alt="EdMoney.org" title="EdMoney.org" /></h1>
+{% block content %}
+{% endblock %}
+</div>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-1596158-4");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

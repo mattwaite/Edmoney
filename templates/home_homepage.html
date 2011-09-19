@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Tracking Education Stimulus Spending{% endblock %}
+{% load cache %}
+{% block content %}
+{% cache 600 homepage %}
+<div id="cont">
+	<h1 id="logo" class="autoMargin"><img src="http://hottype.s3.amazonaws.com/edmoney/images/logo_384.png" alt="EdMoney.org" title="EdMoney.org" /></h1>
+	<div id="surface_hair"></div>
+	<div id="surface_stripA">
+	<div id="surface">
+		<h2><span class="blue">With billions spent, how is the economic stimulus reaching America&rsquo;s schools?</span> <span class="green">EdMoney tracks spending in public schools across the country to find out.</span></h2>		
+		<div id="hp_promos">
+			<div id="promo_blog" class="promo four bgBlue">
+				<div class="content">
+					<h2><a href="/blog/">Blog</a></h2>
+                                        {% for object in latest_posts %}
+					<h3><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h3>
+					<p>{% autoescape off %}{{ object.body|striptags|truncatewords:50 }}{% endautoescape %}</p>
+                                        <div id="hp_byline"><p>By: {% autoescape off %}{{ object.author }}{% endautoescape %} :: {{ object.publication_date|date:"N j, Y P" }}</p></div><br />
+                                        {% endfor %}
+                    <h3><a href="/blog/">Read more blog posts</a></h3>
+				</div>
+			</div>
+			
+			<div id="promo_data" class="promo three bgGreen">
+				<div class="content">
+					<h2><a href="/links/">Latest links</a></h2>
+                                        {% for object in latest_links %}
+					<h3><a href="{{ object.link_url }}">{{ object.link_title }}</a></h3>
+					{% autoescape off %}{{ object.link_description }}{% endautoescape %}
+                                        <div id="hp_byline"><p>Posted {{ object.submitted|date:"N j, Y P" }}</p></div>
+                                        {% endfor %}
+                    <h3><a href="/links/">Read more links</a></h3>
+                    <h3><a href="/contribute/links/">Contribute a link</a></h3>
+
+				</div>
+			</div>
+			
+			
+			<div id="promo_users" class="promo three bgMint">
+				<div class="content">
+					<h2><a href="/data/schools/">Data</a></h2>
+					<h3><a href="/data/schools/">Our database is yours – have fun!</a></h3>
+					<p>EdMoney now has the most <a href="/data/schools/">up-to-date numbers</a> on how fast school districts are spending their federal stimulus dollars. Our database includes state stabilization funds, Title I and IDEA supplemental grants, as well as other miscellaneous awards. It is believed to be the only site that offers district-by-district breakdowns of education stimulus grants nationwide.</p>
+					<p>The data is linked to the federal Common Core of Data, so you can even match your districts to others of similar size.</p>
+					<p>We're now aggregating links, blog posts and data on stimulus money flowing to states and districts around the U.S. We're adding more all the time, more links, more data, more everything.</p>
+					<p>Now comes your part: Can you help us? Do you know something about how stimulus was used in your state or – more importantly – your district? <a href="/accounts/register/">Register</a> and contribute! Tell us what you know, small or large. <a href="/data/schools/">Find your state or district</a> and help us track one of the largest infusions of federal money into local education in history.</p>
+					{% if welcome %}
+                    <h3><a href="{{ welcome.get_absolute_url }}">{{ welcome.title }}</a></h3>
+					<p>{% autoescape off %}{{ welcome.body|striptags|truncatewords:50 }}{% endautoescape %}</p>
+                                        <div id="hp_byline"><p>By: {{ welcome.author }} :: {{ welcome.publication_date|date:"N j, Y P" }}</p></div><br />{% endif %}
+                                        <div class="branding"><p>A project of</p><a href="http://www.ewa.org/"><img src="http://hottype.s3.amazonaws.com/edmoney/images/ewa-logo-200.png" /></a></div>
+                <h3><a href="http://www.edmoney.org/about/">About this site</a></h3>
+                <h3><a href="/staff/">Staff</a></h3>
+				</div>
+<!-- 				<img src="http://hottype.s3.amazonaws.com/edmoney/images/coming_soon.png" class="comingSoon" /> -->
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	</div>
+</div>
+{% endcache %}
+{% endblock %}

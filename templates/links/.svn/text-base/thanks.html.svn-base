@@ -1,0 +1,4 @@
+{% extends "base.html" %}
+{% block content %}
+ Thanks for submitting a link. We'll get it up on the site ASAP.
+{% endblock %}

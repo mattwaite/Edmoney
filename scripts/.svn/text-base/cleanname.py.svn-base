@@ -1,0 +1,33 @@
+from django.core.management import setup_environ
+import sys, random, string, csv
+sys.path.append('/opt/django-projects/')
+from stimulustracker import settings
+setup_environ(settings)
+
+import datetime, string
+
+from stimulustracker.schools.models import SchoolType, SchoolStatus, DistrictType, DistrictStatus, StateEducationDepartment, District, School
+from stimulustracker.stimulus.models import Agency, AwardType, PrimaryAward, SecondaryAward
+
+from django.template.defaultfilters import slugify, urlize
+
+#reader = csv.reader(open("primary.csv"), dialect=csv.excel)
+#reader.next()
+#for row in reader:
+#    pid = row[0]
+#    p = PrimaryAward.objects.get(id=pid)
+#    sn = row[1]
+#    sd = row[2]
+#    p.clean_short_name = sn
+#    p.clean_award_description = sd
+#    p.save()
+
+reader = csv.reader(open("primary.csv"), dialect=csv.excel)
+reader.next()
+for row in reader:
+    pid = row[0]
+    p = PrimaryAward.objects.get(id=pid)
+    clean = p.clean_award_description
+    clean = string.replace(clean, "free and appropriate\"", "\"free and appropriate\"")
+    p.clean_award_description = clean
+    p.save()

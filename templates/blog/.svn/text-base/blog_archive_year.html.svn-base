@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load comments %}
+{% load cache %}
+{% block title %}Blog posts in {{ year }}{% endblock %}
+{% block content %}
+{% cache 600 blogarchivesyear year %}
+<div id="cont" class="blog">
+	<div id="width">
+	<h1 id="blog_logo" class="autoMargin"><img src="http://hottype.s3.amazonaws.com/edmoney/images/logo_384.png" alt="EdMoney.org" title="EdMoney.org" /></h1>
+	<div id="main">
+		<div class="padding">
+		<div class="post">
+			<h2>Monthly archives</h2>
+			<div class="content">
+			{% for month in date_list %}
+			<h4><a href="{{ month|date:"M"|lower }}/">{{ month.date|date:"N Y" }}</a></h4>
+			{% endfor %}
+			</div>
+			<ul class="tools">
+			</ul>
+			<div class="clear"></div>
+		</div>
+		</div>
+	</div>
+{% include "includes/sidebar.html" %}
+</div>
+</div>
+{% endcache %}
+{% endblock %}

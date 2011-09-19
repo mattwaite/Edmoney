@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load cache %}
+{% block title %}{{ special_report.name }}{% endblock %}
+{% block content %}
+{% cache 600 specialsmain %}
+<div id="cont" class="blog">
+	<div id="width">
+	<h1 id="blog_logo" class="autoMargin"><img src="http://hottype.s3.amazonaws.com/edmoney/images/blog_logo_498.png" alt="blog.EdMoney.org" title="EdMoney.org" /></h1>
+	<div id="main">
+		<div class="padding">
+			<div class="special-label" style="font-size:9px; padding-bottom:5px; color:#999999;">Special report</div>
+				<div class="special-header" style="padding-bottom:20px;">
+					<h1 style="font-size:30px; padding-bottom:10px;">{{ special_report.name }}</h1>
+					<div class="special-logo" style="background-color:#999999; width:240px; height:150px; float: left; margin-right:5px; margin-bottom:10px;">{% if special_report.logo %}<img src="{{ special_report.logo.url }}" alt="{{ special_report.name }}" />{% endif %}</div>{% autoescape off %}{{ special_report.chatter }}{% endautoescape %}
+					<div style="clear:both;"></div>
+				</div>
+		{% for object in special_report.mainbars.all %}<div class="post">
+			<h2><a href="{{ object.get_absolute_url}}">{{ object.title }}</a></h2>
+			<div class="info">
+			<h4></h4>
+			<p>{{ object.publication_date|date:"N j, Y P" }}</p>
+			{% if object.author.photo %}<img src="{{ object.author.photo.url }}" width=76 height=76 alt="{{ object.author }}" />{% endif %}
+			<p class="timestamp">Posted by <a href="{{ object.author.get_absolute_url }}">{% autoescape off %}{{ object.author }}{% endautoescape %}</a></p>
+			</div>
+			<div class="content">
+				<p>{% autoescape off %}{{ object.body|truncatewords_html:150 }}{% endautoescape %}</p>
+			</div>
+			
+			<div class="clear"></div>
+		</div>{% endfor %}
+	</div>
+	</div>
+{% include "includes/specials_sidebar.html" %}
+</div>
+</div>
+{% endcache %}
+{% endblock %}

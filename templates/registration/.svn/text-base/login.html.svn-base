@@ -1,0 +1,33 @@
+{% extends "profile_base.html" %}
+{% load humanize %}
+{% load i18n %}
+{% block title %}Login{% endblock %}
+{% block content %}
+		<div id="breadcrumbs"><a href="/profiles/">Profiles</a></div>
+		<div id="main">
+			<div id="col1">
+			<h1>Login</h1>
+<div id="stats"></div>
+<h2>{% ifequal user.active False %}Please activate your account.{% endifequal %}</h2>
+{% ifequal user.active False %}<p>Instructions should be in your inbox.</p>{% endifequal %}
+<div class="comment-form">
+<form method="post" action=".">
+{{ form.as_p }}
+<br />
+<input type="submit" value="{% trans 'Log in' %}" />
+<input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}/data/schools/{% endif %}" />
+</form>
+</div>
+<p>{% trans "Forgot your password" %}? <a href="{% url auth_password_reset %}">{% trans "Reset it" %}</a>!</p>
+<p>{% trans "Not a member" %}? <a href="{% url registration_register %}">{% trans "Register" %}</a>!</p>
+			</div>
+			<div id="col2">
+			</div>
+			<div class="clear"></div>
+			<div id="footer">
+				EdMoney is a project of the <a href="http://www.ewa.org/">Education Writers Association</a>. Development by <a href="http://www.hotttypeconsuling.com">HotType Consulting</a>. Web design by <a href="http://www.upstatement.com">Upstatement</a>
+			</div>
+		</div>
+	</div>
+	</div>
+{% endblock %}

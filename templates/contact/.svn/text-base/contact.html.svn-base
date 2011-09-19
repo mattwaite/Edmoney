@@ -1,0 +1,45 @@
+{% extends "profile_base.html" %}
+{% load humanize %}
+{% load i18n %}
+{% block title %}Contact Us{% endblock %}
+{% block content %}
+		<div id="breadcrumbs"><a href="/contact/">Contact Us</a></div>
+		<div id="main">
+			<div id="col1">
+			<h1>Contact Us</h1>
+<div id="stats"></div>
+<h2></h2>
+<p>Got something on your mind? Let us know.</p>
+   {% if errors %}
+   <div class="fieldWrapper">
+           {% for error in errors %}
+           <span class="error">{{ error }}</span>
+           {% endfor %}
+   </div>
+   {% endif %}
+   <form action="/contact/" method="post">
+       <div class="fieldWrapper">
+           <span class="label">Subject:</span> <input type="text"
+name="subject" value="{{ subject }}"></p>
+       </div>
+       <div class="fieldWrapper">
+           <span class="label">Your e-mail:</span> <input type="text"
+name="email" value="{{ email }}"></p>
+       </div>
+       <div class="fieldWrapper">
+           <span class="label">Message:</span> <textarea
+name="message" rows="10" cols="50">{{ message }}</textarea></p>
+       </div>
+       <p class="fieldWrapperSubmit"><input type="submit" value="Submit"></p>
+   </form>
+			</div>
+			<div id="col2">
+			</div>
+			<div class="clear"></div>
+			<div id="footer">
+				EdMoney is a project of the <a href="http://www.ewa.org/">Education Writers Association</a>. Development by <a href="http://www.hotttypeconsuling.com">HotType Consulting</a>. Web design by <a href="http://www.upstatement.com">Upstatement</a>
+			</div>
+		</div>
+	</div>
+	</div>
+{% endblock %}

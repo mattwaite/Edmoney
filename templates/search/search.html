@@ -1,0 +1,12 @@
+<h2>Search results</h2>
+{% if page.object_list %}
+        {% for result in page.object_list %}
+            {% if result.object.school_name %}<p><strong>School</strong>: <a href="{{ result.object.get_absolute_url }}">{{ result.object.school_name }}</a>, {{result.object.city}}, {{result.object.state}}</p>{% endif %}
+            {% if result.object.district_name %}<p><strong>District</strong>: <a href="{{ result.object.get_absolute_url }}">{{ result.object.district_name }}</a>, {{result.object.city}}, {{result.object.state}}</p>{% endif %}
+            {% if result.object.state_name %}<p><strong>State</strong>: <a href="{{ result.object.get_absolute_url }}">{{ result.object.state_name }}</a></p>{% endif %}
+        {% empty %}
+            <p>No results found.</p>
+        {% endfor %}
+   {% else %}
+<p>No results found.</p>   
+{% endif %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load cache %}
+{% block title %}{% autoescape off %}{{ staffer.first_name }} {{ staffer.last_name }}{% endautoescape %}{% endblock %}
+{% block content %}
+{% cache 600 staffdetail staffer.id %}
+<div id="cont" class="blog">
+	<div id="width">
+	<h1 id="blog_logo" class="autoMargin"><img src="http://hottype.s3.amazonaws.com/edmoney/images/blog_logo_498.png" alt="blog.EdMoney.org" title="EdMoney.org" /></h1>
+	<div id="main">
+		<div class="padding">
+		<div class="post">
+			<h2>{% autoescape off %}{{ staffer.first_name }} {{ staffer.last_name }}{% endautoescape %}</h2>
+			<div class="info">
+			<h4></h4>
+			<p></p>
+			{% if staffer.photo %}<img src="{{ staffer.photo.url }}" width=76 height=76 alt="{{ staffer.first_name }} {{ staffer.last_name }}" />{% endif %}
+			<p class="timestamp">Email: 
+<script type = "text/javascript"> 
+var myString = "{{ staffer.email_address }}"; 
+var mySplitResult = myString.split("@"); 
+user = mySplitResult[0];
+site = mySplitResult[1];
+document.write('<a href=\"mailto:' + user + '@' + site + '\">');
+document.write(user + ' AT ' + site + '</a>');
+</script></p>
+			</div>
+			<div class="content">
+				{% autoescape off %}{{ staffer.bio }}{% endautoescape %}
+				{% if recent_author_posts %}
+                                <h4>Recent posts by {% autoescape off %}{{ staffer.first_name }} {{ staffer.last_name }}{% endautoescape %}</h4>
+                                {% for object in recent_author_posts %}
+                                <p><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></p>
+                                {% endfor %}
+                {% endif %}
+			</div>
+			
+			<ul class="tools">
+			</ul>
+			<div class="clear"></div>
+		</div>
+		</div>
+	</div>
+{% include "includes/sidebar.html" %}
+</div>
+</div>
+{% endcache %}
+{% endblock %}

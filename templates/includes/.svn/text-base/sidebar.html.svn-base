@@ -1,0 +1,64 @@
+	<div id="sidebar">
+	<div class="padding">
+		<div class="item">
+			<h3>About the blog</h3>
+			<p>EdMoney.org will document spending of ARRA funds in states, school districts and schools.  It is a project of the Education Writers Association and its members and colleagues, ably assisted by Matt Waite and Chase Davis of HotType Consulting.  The project emerged from ideas developed by Kent Fischer, while at the Dallas Morning News and is supported by a two year grant from the Bill & Melinda Gates Foundation. We code stories and tips by state, school district and schools to help reporters and their communities understand how these funds are being spent. You can join us by uploading your stories, tips and commenting on the blog - we're interested in what you've found.</p>
+		<div class="branding"><p>A project of</p><a href="http://www.ewa.org/"><img src="http://hottype.s3.amazonaws.com/edmoney/images/ewa-logo-200.png" /></a></div>
+		</div>
+		
+		<div class="item archives">
+			<h3>Special Reports</h3>
+			<ul>
+				<li><a href="http://edmoney.org/special-reports/national-report-card-on-stimulus/">National Report Card on the Stimulus</a></li>
+			</ul>
+		</div>
+		
+		<div class="item">
+			<h3>Follow us on Twitter</h3>
+                        <p>We're on Twitter at <a href="http://twitter.com/EWAedmoney">@EWAedmoney</a>.</p>
+                </div>
+{% if recent_posts %}                
+		<div class="item archives">
+			<h3>Recent posts</h3>
+			<ul>{% for object in recent_posts %}
+				<li><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></li>
+                            {% endfor %}
+			</ul>
+		</div>
+		<div class="item archives">
+			<h3>Archives</h3>
+                        <ul>
+                            <li><a href="/blog/2010/">Posts from 2010 by month</a></li>
+                        </ul>
+                </div>
+{% endif %}
+		<div class="item">
+			<h3>Contribute</h3>
+                        <p>Got an education stimulus link to share? Add it <a href="/contribute/links/">here</a>.</p>
+                </div>
+		<div class="item archives">
+			<h3>Sites we like</h3>
+			<ul>
+				<li><a href="http://www.edweek.org/ew/collections/schools-stimulus/index.html">Education Week – Stimulus and Schools</a></li>
+				<li><a href="http://www.newamerica.net/blog/ed_money_watch">New America Foundation's Ed Money Watch</a></li>
+				<li><a href="http://www.propublica.org/ion/stimulus">Eye on the Stimulus</a></li>
+				<li><a href="http://www.stimuluswatch.org/project/by_program/Schools">Stimulus Watch</a></li>
+				<li><a href="http://www.learningpt.org/recovery/">Education Coverage and Reinvestment Center</a></li>
+				<li><a href="http://www.educationcounsel.com/">Education Counsel</a></li>
+				<li><a href="http://www.ncef.org/school-modernization/">National Clearinghouse for Educational Facilities</a></li>
+				<li><a href="http://www.ascd.org/public_policy/Education_Stimulus_Resources.aspx">ASCD American Recovery and Reinvestment Act site</a></li>
+				<li><a href="http://www.ideamoneywatch.com/main/">IDEA Money Watch</a></li>
+			</ul>
+		<h3>Contact</h3>
+		<p>Email: 
+<script type = "text/javascript"> 
+user = 'lcrouch';
+site = 'ewa.org';
+document.write('<a href=\"mailto:' + user + '@' + site + '\">');
+document.write(user + ' AT ' + site + '</a>');
+</script></p>
+<h3>Feed</h3>
+<p><a href="/feeds/blog/">RSS</a></p>
+		</div>
+	</div>
+	</div>

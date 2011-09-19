@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Preview your comment" %}{% endblock %}
+
+{% block content %}
+<div id="cont" class="blog">
+	<div id="width">
+	<h1 id="blog_logo" class="autoMargin"><img src="http://hottype.s3.amazonaws.com/edmoney/images/blog_logo_498.png" alt="blog.EdMoney.org" title="EdMoney.org" /></h1>
+	<div id="main">
+		<div class="padding">
+		<div class="post">
+<div class="comment-form">
+{% load comments %}
+  <form action="{% comment_form_target %}" method="post">
+    {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
+    {% if form.errors %}
+    <h1>{% blocktrans count form.errors|length as counter %}Please correct the error below{% plural %}Please correct the errors below{% endblocktrans %}</h1>
+    {% else %}
+    <h2>{% trans "Preview your comment" %}</h2>
+      <div class="comment-preview">{{ comment|linebreaks }}</div>
+      <div class="comment-revision"><input type="submit" name="submit" class="submit-post" value="{% trans "Post your comment" %}" id="submit" /> {% trans "or make changes" %}:<br /></div>
+    {% endif %}
+    {% for field in form %}
+      {% if field.is_hidden %}
+        {{ field }}
+      {% else %}
+        {% if field.errors %}{{ field.errors }}{% endif %}
+        <p
+          {% if field.errors %} class="error"{% endif %}
+          {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+          {{ field.label_tag }} {{ field }}
+        </p>
+      {% endif %}
+    {% endfor %}
+    <p class="submit">
+    <input type="submit" name="submit" class="submit-post" value="{% trans "Post" %}" />
+    <input type="submit" name="preview" class="submit-preview" value="{% trans "Preview" %}" />
+    </p>
+  </form>
+</div>
+		</div>
+		</div>
+	</div>
+	<div id="sidebar">
+	<div class="padding">
+		<div class="item">
+			<h3>About the blog</h3>
+			<p>If the federal government gave your school (or school district) a lot of money - A LOT OF MONEY - with few strings to help it through the bad economy, would you want to know how that money was spent?  That's what we thought. And what if you were connected to education reporters all over the country who also wanted to know...and could share what they were seeing in their communities? So here we are - EdMoney.org. Led by Mc Nelly Torres and Lori Crouch and a large team of collaborating reporters around the country. We hope to track spending of American Recovery and Reinvestment Act (ARRA) funds to schools and school districts.  We want to see how creatively schools used the money - and determine what came out of the funds.  Did the money keep schools from bankruptcy?  Help them innovate and change programs? Was it well spent? Poorly spent? How did the feds make this money available? More importantly, how did they monitor school districts expenditures?</p>
+		<div class="branding"><p>A project of</p><a href="http://www.ewa.org/"><img src="http://hottype.s3.amazonaws.com/edmoney/images/ewa-logo-200.png" /></a></div>
+		</div>
+		
+		
+		<div class="item">
+			<h3>Sites we like</h3>
+			<ul>
+				<li><a href="http://www.edweek.org/ew/collections/schools-stimulus/index.html">Education Week  Stimulus and Schools</a></li>
+				<li><a href="http://www.newamerica.net/blog/ed_money_watch">New America Foundation's Ed Money Watch</a></li>
+				<li><a href="http://www.propublica.org/ion/stimulus">Eye on the Stimulus</a></li>
+				<li><a href="http://www.stimuluswatch.org/project/by_program/Schools">Stimulus Watch</a></li>
+				<li><a href="http://www.learningpt.org/recovery/">Education Coverage and Reinvestment Center</a></li>
+				<li><a href="http://www.educationcounsel.com/">Education Counsel</a></li>
+				<li><a href="http://www.ncef.org/school-modernization/">National Clearinghouse for Educational Facilities</a></li>
+				<li><a href="http://www.ascd.org/public_policy/Education_Stimulus_Resources.aspx">ASCD American Recovery and Reinvestment Act site</a></li>
+			</ul>
+		</div>
+	</div>
+	</div>
+</div>
+</div>
+
+
+{% endblock %}

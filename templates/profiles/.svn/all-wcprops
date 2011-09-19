@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/stimulustracker/!svn/ver/50/stimulustracker/templates/profiles
+END
+profile_detail.html
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/stimulustracker/!svn/ver/50/stimulustracker/templates/profiles/profile_detail.html
+END
+create_profile.html
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/stimulustracker/!svn/ver/50/stimulustracker/templates/profiles/create_profile.html
+END
+edit_profile.html
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/stimulustracker/!svn/ver/50/stimulustracker/templates/profiles/edit_profile.html
+END
+profile_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/stimulustracker/!svn/ver/50/stimulustracker/templates/profiles/profile_list.html
+END

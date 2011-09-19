@@ -1,0 +1,239 @@
+{% extends "data_base.html" %}
+{% load humanize %}
+{% load comments %}
+{% load cache %}
+{% block title %}Stimulus data for {{ district }}{% endblock %}
+{% block googlemaps %}
+<script type="text/javascript">
+		function initMap(){
+			var latLng = new google.maps.LatLng({{ district.point.y }}, {{ district.point.x }});
+    			var myOptions = {zoom:10, center:latLng, mapTypeId:google.maps.MapTypeId.TERRAIN, scrollwheel:false};
+				var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+		}
+</script>
+{% endblock %}
+{% block content %}
+{% cache 600 district district.district_name %}
+		<div id="breadcrumbs"><a href="/data/schools/">Main</a> &raquo; <a href="{{ district.state_education_department.get_absolute_url }}">{{ district.state_education_department }}</a> &raquo; <a href="data_district.html">{{ district }}</a></div>
+		<div id="main">
+			<div id="col1">
+			<h1>{{ district.district_name }}</h1>
+			<div id="stats">
+				<div class="stat">
+					<h5>{% if stim_sum.amount_awarded__sum %}${{ stim_sum.amount_awarded__sum|intword }}{% else %}$0{% endif %}</h5>
+					<h6>Stimulus funds awarded*<!--<strong>Rank:#24</strong>--></h6>
+				</div>
+				<div class="stat">
+					<h5>{% if spent_sum.amount_disbursed__sum %}${{ spent_sum.amount_disbursed__sum|floatformat:0|intword }}{% else %}$0{% endif %}</h5>
+					<h6>Stimulus dollars spent <!--<strong>Rank:#</strong></h6>-->
+				</div>
+				<div class="stat">
+					<h5>{{ pct_spent|floatformat:0|intcomma }}%</h5>
+					<h6>Percent of stimulus dollars spent <!--<strong>Rank:#</strong></h6>-->
+				</div>
+				<div class="stat">
+					{% for object in demographics %}<h5>{{ object.clean_total_students|intcomma }}</h5>
+					<h6>Total students in {{ object.school_year }} <!--<strong>Rank:#24</strong>--></h6>{% endfor %}
+				</div>
+				<!--<div class="stat">-->
+				<!--	{% for object in demographics %}<h5>{% ifequal object.total_teachers|intcomma "-1.0" %}Not reported{% else %}{{ object.total_teachers|intcomma }}{% endifequal %}</h5>-->
+				<!--	<h6>Total teachers <strong>Rank:#24</strong></h6>{% endfor %}-->
+				<!--</div>-->
+				<div class="clear"></div>
+                        <div id="note"><h6>* Figures are grants tracked by Edmoney.org updated for the second quarter 2011.</h6></div>
+			</div>
+			<h2>Recent updates</h2>
+			<p class="explain" style="float:left">News, links and data tagged with this district.</p>
+			<div class="sorter" style="margin-top:-20px;">
+			</div>
+			<div class="clear"></div>
+			<div id="updates">
+			{% if posts %}
+			{% for object in posts %}
+				<div class="update" data-clicks="1" data-daterank="{{ object.publication_date|date:"Ymd" }}">	
+					<div class="icon_stack">
+						<img class="icon" src="http://hottype.s3.amazonaws.com/edmoney/images/icons/update_blog.png" />
+						<h6>Blog</h6>
+					</div>
+					<div class="info_stack">
+						<h3><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h3>
+						{% autoescape off %}{{ object.body|removetags:"div"|truncatewords:100 }}{% endautoescape %}
+						<p class="ender">Posted {{ object.publication_date|date:"N j, Y P" }} | {% get_comment_count for object as comment_count %}{{ comment_count }} comments</p>
+					</div>
+					<div class="clear"></div>
+				</div>
+			{% endfor %}
+			{% else %}
+				<div class="update" data-clicks="1" data-daterank="0">	
+					<div class="icon_stack">
+						<img class="icon" src="http://hottype.s3.amazonaws.com/edmoney/images/icons/update_blog.png" />
+						<h6>Blog</h6>
+					</div>
+					<div class="info_stack">
+						<h3><a href="#">No posts for this district</a></h3>
+						<p>We're updating all the time. Check back.</p>
+					</div>
+					<div class="clear"></div>
+				</div>
+			{% endif %}
+			{% if links %}
+			{% for object in links %}
+				<div class="update" data-clicks="2" data-daterank="{{ object.submitted|date:"Ymd" }}">	
+					<div class="icon_stack">
+						<img class="icon" src="http://hottype.s3.amazonaws.com/edmoney/images/icons/update_link.png" />
+						<h6>Link</h6>
+					</div>
+					<div class="info_stack">
+						<h3><a href="{{ object.link_url }}">{{ object.link_title }}</a></h3>
+						<p>{% autoescape off %}{{ object.link_description }}{% endautoescape %}</p>
+						<p class="ender">Posted {{ object.submitted|date:"N j, Y P" }}</p>
+					</div>
+					<div class="clear"></div>
+				</div>
+			{% endfor %}
+			{% else %}
+				<div class="update" data-clicks="2" data-daterank="0">	
+					<div class="icon_stack">
+						<img class="icon" src="http://hottype.s3.amazonaws.com/edmoney/images/icons/update_link.png" />
+						<h6>Link</h6>
+					</div>
+					<div class="info_stack">
+						<h3><a href="#">No links for this district</a></h3>
+						<p>We're updating all the time. Check back.</p>
+					</div>
+					<div class="clear"></div>
+				</div>
+			{% endif %}
+                        {% if stim_projects %}
+			{% for object in stim_projects %}
+				<div class="update" data-clicks="3" data-daterank="{{ object.award_date|date:"Ymd" }}">	
+					<div class="icon_stack">
+						<img class="icon" src="http://hottype.s3.amazonaws.com/edmoney/images/icons/update_data.png" />
+						<h6>Data</h6>
+					</div>
+					<div class="info_stack">
+						<h3><a href="{{ object.get_absolute_url }}">{{ object.primary_award.clean_short_name }}</a></h3>
+						<p><strong>Amount: ${{ object.amount_awarded|floatformat:0|intcomma }}</strong></p>
+						<p>{{ object.primary_award.clean_award_description|truncatewords:100 }}</p>
+						<p class="ender">Awarded {{ object.award_date|date:"N j, Y" }}</p>
+					</div>
+					<div class="clear"></div>
+				</div>
+			{% endfor %}
+			{% else %}
+				<div class="update" data-clicks="2" data-daterank="0">	
+					<div class="icon_stack">
+						<img class="icon" src="http://hottype.s3.amazonaws.com/edmoney/images/icons/update_data.png" />
+						<h6>Data</h6>
+					</div>
+					<div class="info_stack">
+						<h3><a href="#">No data for this district</a></h3>
+						<p>We're updating all the time. Check back.</p>
+					</div>
+					<div class="clear"></div>
+				</div>
+			{% endif %}
+			</div>
+{% endcache %}
+{% if user.is_authenticated %}
+				<div id="submit">
+					<div class="block-head">
+						<h2>Help us!</h2>
+						<p>Know something about stimulus spending in {{ district }}? Do you know of a job that got saved? Money that got misspent? Help us out and tell us about it.</p>
+					</div>
+					<div class="block-form">
+                                                <form action="" method="post">
+						{{ form.as_p }}
+						<input type="submit" value="Post" style="float:right" />
+                                                </form>
+					</div>
+					<div class="clear"></div>
+				</div>
+{% else %}
+				<div id="submit">
+                                <h2>Help us out!</h2>
+                                <p>We're tracking stimulus spending across the country. We need your help. <a href="{% url registration_register %}">Register</a> or <a href="/accounts/login/">log in</a> and tell us what you know.</p>
+				</div>
+{% endif %}
+{% cache 600 districtsidebar district.district_name %}
+			</div>
+			<div id="col2">
+				<div id="map_canvas"></div>
+                        <h3>About the data</h3>
+                        <p>Grants highlighted here are grants identified by Edmoney.org as having gone to this district. They are called "secondary" grants, where the primary grant went to a state agency. Edmoney.org is not currently tracking grants to charter schools. In some rare cases, grants were made directly from the federal government to an individual school. Those grants are not included in these figures.</p>
+                                <h3>Search for a state or district</h3>
+                                <form action="" onsubmit="return false;">  
+                                <input type="text" id="search-value" value="">
+                                <input type="submit" id="search-button" value="Search">
+                                </form>
+                                <div id="search-target"></div>
+                                {% if journalist %}
+				<h3>Recent journalist reports <a href="#">&raquo;</a></h3>
+                                {% for object in reports %}
+				<h4><a href="{{ object.get_absolute_url }}">{{ object.headline }}</a></h4>
+				<p>{{ object.body }}</p>
+                                <p>{{ object.contributor }}</p>
+                                {% endfor %}
+                                {% endif %}
+                                {% if citizens %}
+				<h3>Recent citizen reports <a href="#">&raquo;</a></h3>
+                                {% for object in citizens %}
+				<h4><a href="{{ object.get_absolute_url }}">{{ object.headline }}</a></h4>
+				<p><strong>By: {{ object.contributor }}</strong></p>
+                                <p>{{ object.body|truncatewords:50 }}</p>
+                                {% endfor %}
+                                {% endif %}
+                                <h3>Can you help?</h3>
+                                <p><a href="{% url registration_register %}">Register</a> or <a href="/accounts/login/">log in</a> and let us know what you know about stimulus spending at {{ district }}.</p>
+				<!--<p class="expander"><a href="/data/mo/reports/journalists">126 more reports &raquo;</a></p>-->
+                                <h3>Compare to other districts this size</h3>
+                                {% if random %}
+                                <p>There are {{ count }} school districts with a similar student population in 2006-2007. Here's a list of 25 chosen at random.</p>
+                                {% else %}
+                                <p>Here are {{ count }} school districts with a similar student population in 2006-2007.</p>
+                                {% endif %}
+                                <br />
+                                {% for object in compare|dictsort:"total_students" %}
+                                <p><a href="{{ object.district.get_absolute_url }}">{{ object.district.district_name }}, {{ object.district.state }}</a>: {{ object.total_students|intcomma }} students</p>
+                                {% endfor %}
+			</div>
+			<div class="clear"></div>
+			<div id="footer">
+				EdMoney is a project of the <a href="http://www.ewa.org/">Educational Writers Association</a>. Development by <a href="http://www.hotttypeconsuling.com">HotType Consulting</a>. Web design by <a href="http://www.upstatement.com">Upstatement</a>
+			</div>
+		</div>
+
+	</div>
+	</div>
+<script type="text/javascript">
+$('#search-value').bind('keypress', function(e) { 
+    if(e.keyCode==13){ 
+        var searchQuery = $('#search-value').attr('value'); 
+        var searchQuery = searchQuery.replace("'", "");
+        var searchQuery = searchQuery.replace(",", "");
+        var searchQuery = searchQuery.replace(";", "");
+        var searchQuery = searchQuery.replace("&", "");
+        var searchQuery = searchQuery.replace("  ", " ");
+        var searchQuery = searchQuery.replace("-", " ");
+        $('#results').show(); 
+        var searchResults = $.get('/search/?q='+searchQuery+'&models=schools.stateeducationdepartment&models=schools.district', function(data){
+            $('#search-target').html(data);
+        });
+    } 
+}); 
+$('#search-button').click(function(){ 
+    var searchQuery = $('#search-value').attr('value'); 
+    var searchQuery = searchQuery.replace("'", "");
+    var searchQuery = searchQuery.replace(",", "");
+    var searchQuery = searchQuery.replace(";", "");
+    var searchQuery = searchQuery.replace("&", "");
+    var searchQuery = searchQuery.replace("  ", " ");
+    var searchQuery = searchQuery.replace("-", " ");
+    $('#results').show(); 
+    var searchResults = $.get('/search/?q='+searchQuery+'&models=schools.stateeducationdepartment&models=schools.district', function(data){
+        $('#search-target').html(data);
+    }); 
+});
+</script>
+{% endcache %}
+{% endblock %}

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/stimulustracker/!svn/ver/47/stimulustracker/staff
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/stimulustracker/!svn/ver/27/stimulustracker/staff/admin.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/stimulustracker/!svn/ver/39/stimulustracker/staff/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/stimulustracker/!svn/ver/1/stimulustracker/staff/__init__.py
+END
+tests.py
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/stimulustracker/!svn/ver/1/stimulustracker/staff/tests.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/stimulustracker/!svn/ver/29/stimulustracker/staff/models.py
+END

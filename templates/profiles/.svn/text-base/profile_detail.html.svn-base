@@ -1,0 +1,26 @@
+{% extends "profile_base.html" %}
+{% load humanize %}
+{% load i18n %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+		<div id="breadcrumbs"><a href="/profiles/">Profiles</a></div>
+		<div id="main">
+			<div id="col1">
+			<h1>Your profile</h1>
+<div id="stats"></div>
+<h2></h2>
+<h3>User name: {{ profile.user.username }}</h3>
+<p>{{ profile.contributor_type }}</p>
+{% if profile.bio %}<p><strong>Bio</strong></p>
+<p>{{ profile.bio }}</p>{% endif %}
+			</div>
+			<div id="col2">
+			</div>
+			<div class="clear"></div>
+			<div id="footer">
+				EdMoney is a project of the <a href="http://www.ewa.org/">Education Writers Association</a>. Development by <a href="http://www.hotttypeconsuling.com">HotType Consulting</a>. Web design by <a href="http://www.upstatement.com">Upstatement</a>
+			</div>
+		</div>
+	</div>
+	</div>
+{% endblock %}

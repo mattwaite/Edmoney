@@ -1,0 +1,23 @@
+{% extends "profile_base.html" %}
+{% load humanize %}
+{% load i18n %}
+{% block title %}Registration complete{% endblock %}
+{% block content %}
+		<div id="breadcrumbs"><a href="/accounts/register/">Register</a></div>
+		<div id="main">
+			<div id="col1">
+			<h1>Registration complete</h1>
+<div id="stats"></div>
+<h2>Step 2: Please activate your account</h2>
+<p>We've sent you an email with instructions on how to activate your account.</p>
+			</div>
+			<div id="col2">
+			</div>
+			<div class="clear"></div>
+			<div id="footer">
+				EdMoney is a project of the <a href="http://www.ewa.org/">Education Writers Association</a>. Development by <a href="http://www.hotttypeconsuling.com">HotType Consulting</a>. Web design by <a href="http://www.upstatement.com">Upstatement</a>
+			</div>
+		</div>
+	</div>
+	</div>
+{% endblock %}

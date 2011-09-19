@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Thank you for your comment{% endblock %}
+{% block content %}
+<div id="cont" class="blog">
+	<div id="width">
+	<h1 id="blog_logo" class="autoMargin"><img src="http://hottype.s3.amazonaws.com/edmoney/images/blog_logo_498.png" alt="blog.EdMoney.org" title="EdMoney.org" /></h1>
+	<div id="main">
+		<div class="padding">
+		<div class="post">
+			<h2>Thanks for your comment.</h2>
+			<p>You can <a href="/blog/">return to the blog</a> or <a href="/">go back to the home page.</a></p>
+		</div>
+		</div>
+	</div>
+	<div id="sidebar">
+	<div class="padding">
+		<div class="item">
+			<h3>About the blog</h3>
+			<p>EdMoney.org will document spending of ARRA funds in states, school districts and schools.  It is a project of the Education Writers Association and its members and colleagues, ably assisted by Matt Waite and Chase Davis of HotType Consulting.  The project is led by Mc Nelly Torres, Lori Crouch and Nirvi Shah.  We will code stories and tips by state, school district and schools to help reporters and their communities understand how these funds are being spent. You can join us by uploading your stories, tips and commenting on the blog - we're interested in what you've found.</p>
+		<div class="branding"><p>A project of</p><a href="http://www.ewa.org/"><img src="http://hottype.s3.amazonaws.com/edmoney/images/ewa-logo-200.png" /></a></div>
+		</div>
+		
+		
+		<div class="item">
+			<h3>Sites we like</h3>
+			<ul>
+				<li><a href="http://www.edweek.org/ew/collections/schools-stimulus/index.html">Education Week  Stimulus and Schools</a></li>
+				<li><a href="http://www.newamerica.net/blog/ed_money_watch">New America Foundation's Ed Money Watch</a></li>
+				<li><a href="http://www.propublica.org/ion/stimulus">Eye on the Stimulus</a></li>
+				<li><a href="http://www.stimuluswatch.org/project/by_program/Schools">Stimulus Watch</a></li>
+				<li><a href="http://www.learningpt.org/recovery/">Education Coverage and Reinvestment Center</a></li>
+				<li><a href="http://www.educationcounsel.com/">Education Counsel</a></li>
+				<li><a href="http://www.ncef.org/school-modernization/">National Clearinghouse for Educational Facilities</a></li>
+				<li><a href="http://www.ascd.org/public_policy/Education_Stimulus_Resources.aspx">ASCD American Recovery and Reinvestment Act site</a></li>
+			</ul>
+		</div>
+	</div>
+	</div>
+</div>
+</div>
+{% endblock %}

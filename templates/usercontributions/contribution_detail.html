@@ -1,0 +1,48 @@
+{% extends "data_base.html" %}
+{% load humanize %}
+{% load comments %}
+{% load cache %}
+{% block title %}Contribution: {{ contribution.headline }}{% endblock %}
+{% block content %}
+{% cache 600 contributiondetail contribution.headline %}
+{% get_comment_count for contribution as comment_count %}
+		<!--<div id="breadcrumbs"><a href="/profiles/">Profiles</a></div>-->
+		<div id="main">
+			<div id="col1">
+                        <h2>{{ contribution.headline }}</h2>
+                        <div class="contribution">
+                        <p class="contributor"><strong>Contributor: {{ contribution.contributor }} | Posted: {{ contribution.created|date:"N j, Y \a\t g:i a" }}</strong></p>
+                        {{ contribution.body|linebreaks }}
+                        </div>
+                        <h3>Comments</h3>
+                        <div class="comment-form">
+                        {% render_comment_form for contribution %}
+                        </div>
+                        {% get_comment_list for contribution as comment_list %}
+                        {% if comment_list %}
+                        	<div class="comment-bricks"> 
+                        		{% for comment in comment_list %}
+                        			<div class="comment-container">
+                        				<div class="comment-credit"><span class="comment-author">{{ comment.user_name }}</span> said on {{ comment.submit_date|date:"N j, Y \a\t P" }}</div>
+                        				<div class="comment-item">{{ comment.comment|linebreaks }}</div>
+                        				<div class="clear"></div>
+                        			</div>
+                        		{% endfor %}
+                        	</div>
+                        {% else %}
+                        	<div class="comment-bricks">
+                        	   <div class="comment-container">No comments yet. Be brave. Be the first.</div>
+                            </div>
+                        {% endif %}
+			</div>
+			<div id="col2">
+			</div>
+			<div class="clear"></div>
+			<div id="footer">
+				EdMoney is a project of the <a href="http://www.ewa.org/">Education Writers Association</a>. Development by <a href="http://www.hotttypeconsuling.com">HotType Consulting</a>. Web design by <a href="http://www.upstatement.com">Upstatement</a>
+			</div>
+		</div>
+	</div>
+	</div>
+{% endcache %}
+{% endblock %}

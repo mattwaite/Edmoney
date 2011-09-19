@@ -1,0 +1,231 @@
+from django.core.management import setup_environ
+import sys, random, string, csv
+sys.path.append('/opt/django-projects/')
+from stimulustracker import settings
+setup_environ(settings)
+
+from stimulustracker.schools.models import StateEducationDepartment
+from stimulustracker.stimulus.models import PrimaryAward
+
+from django.template.defaultfilters import slugify, urlize
+
+terms = ["EDUCATION DEPARTMENT", "DEPARTMENT OF EDUCATION", "PUBLIC INSTRUCTION", "EXECUTIVE OFFICE", "DEPT OF EDUCATION", "EDUCATION AGENCY", "EDUCATION, ", "ADMINISTRATION, ", "STATE OF", "STATE BOARD OF EDUCATION", "COMMONWEALTH OF", "DEPARTMENT OF THE", "DEPARTMENT OF ELEMENTARY AND SECONDARY EDUCATION", "ADMINISTRATION, ", "SOCIAL SERVICES, ", "LIEUTENANT GOVERNOR", "GOVERNOR'S OFFICE", "SECRETARY OF STATE", "DEPARTMENT OF HEALTH"]
+
+for term in terms:
+    p = PrimaryAward.objects.filter(recipient_name__contains=term)
+    for object in p:
+        try:
+            st = object.recipient_state
+            if st == "AL":
+                stname="Alabama"
+                apst="Ala."
+                stslug = slugify(stname)
+            if st == "AK":
+                stname="Alaska"
+                apst="Alaska"
+                stslug = slugify(stname)
+            if st == "AZ":
+                stname="Arizona"
+                apst ="Ariz."
+                stslug = slugify(stname)
+            if st == "AR":
+                stname="Arkansas"
+                apst = "Ark."
+                stslug = slugify(stname)
+            if st == "CA":
+                stname="California"
+                apst="Calif."
+                stslug = slugify(stname)
+            if st == "CO":
+                stname="Colorado"
+                apst="Colo."
+                stslug = slugify(stname)
+            if st == "CT":
+                stname="Connecticut"
+                apst = "Conn."
+                stslug = slugify(stname)
+            if st == "DE":
+                stname="Delaware"
+                apst="Del."
+            if st == "DC":
+                stname="Dist. of Columbia"
+                apst = "D.C."
+                stslug=slugify(stname)
+            if st == "FL":
+                stname="Florida"
+                apst = "Fla."
+                stslug=slugify(stname)
+            if st == "GA":
+                stname="Georgia"
+                apst = "Ga."
+                stslug=slugify(stname)
+            if st == "HI":
+                stname="Hawaii"
+                apst = "Hawaii"
+                stslug=slugify(stname)
+            if st == "ID":
+                stname="Idaho"
+                apst = "Idaho"
+                stslug=slugify(stname)
+            if st == "IL":
+                stname="Illinois"
+                apst = "Ill."
+                stslug=slugify(stname)
+            if st == "IN":
+                stname="Indiana"
+                apst = "Ind."
+                stslug=slugify(stname)
+            if st == "IA":
+                stname="Iowa"
+                apst = "Iowa"
+                stslug=slugify(stname)
+            if st == "KS":
+                stname="Kansas"
+                apst = "Kan."
+                stslug=slugify(stname)
+            if st == "KY":
+                stname="Kentucky"
+                apst = "Ky."
+                stslug=slugify(stname)
+            if st == "LA":
+                stname="Louisiana"
+                apst = "La."
+                stslug=slugify(stname)
+            if st == "ME":
+                stname="Maine"
+                apst = "Maine"
+                stslug=slugify(stname)
+            if st == "MD":
+                stname="Maryland"
+                apst = "Md."
+                stslug=slugify(stname)
+            if st == "MA":
+                stname="Massachusetts"
+                apst = "Mass."
+                stslug=slugify(stname)
+            if st == "MI":
+                stname="Michigan"
+                apst = "Mich."
+                stslug=slugify(stname)
+            if st == "MN":
+                stname="Minnesota"
+                apst = "Minn."
+                stslug=slugify(stname)
+            if st == "MS":
+                stname="Mississippi"
+                apst = "Miss."
+                stslug=slugify(stname)
+            if st == "MO":
+                stname="Missouri"
+                apst = "Mo."
+                stslug=slugify(stname)
+            if st == "MT":
+                stname="Montana"
+                apst = "Mont."
+                stslug=slugify(stname)
+            if st == "NE":
+                stname="Nebraska"
+                apst = "Neb."
+                stslug=slugify(stname)
+            if st == "NV":
+                stname="Nevada"
+                apst = "Nev."
+                stslug=slugify(stname)
+            if st == "NH":
+                stname="New Hampshire"
+                apst = "N.H."
+                stslug=slugify(stname)
+            if st == "NJ":
+                stname="New Jersey"
+                apst = "N.J."
+                stslug=slugify(stname)
+            if st == "NM":
+                stname="New Mexico"
+                apst = "N.M."
+                stslug=slugify(stname)
+            if st == "NY":
+                stname="New York"
+                apst = "N.Y."
+                stslug=slugify(stname)
+            if st == "NC":
+                stname="North Carolina"
+                apst = "N.C."
+                stslug=slugify(stname)
+            if st == "ND":
+                stname="North Dakota"
+                apst = "N.D."
+                stslug=slugify(stname)
+            if st == "OH":
+                stname="Ohio"
+                apst = "Ohio"
+                stslug=slugify(stname)
+            if st == "OK":
+                stname="Oklahoma"
+                apst = "Okla."
+                stslug=slugify(stname)
+            if st == "OR":
+                stname="Oregon"
+                apst = "Ore."
+                stslug=slugify(stname)
+            if st == "PA":
+                stname="Pennsylvania"
+                apst = "Pa."
+                stslug=slugify(stname)
+            if st == "PR":
+                stname="Puerto Rico"
+                apst = "Puerto Rico"
+                stslug=slugify(stname)
+            if st == "RI":
+                stname="Rhode Island"
+                apst = "R.I."
+                stslug=slugify(stname)
+            if st == "SC":
+                stname="South Carolina"
+                apst = "S.C."
+                stslug=slugify(stname)
+            if st == "SD":
+                stname="South Dakota"
+                apst = "S.D."
+                stslug=slugify(stname)
+            if st == "TN":
+                stname="Tennessee"
+                apst = "Tenn."
+                stslug=slugify(stname)
+            if st == "TX":
+                stname="Texas"
+                apst = "Texas"
+                stslug=slugify(stname)
+            if st == "UT":
+                stname="Utah"
+                apst = "Utah"
+                stslug=slugify(stname)
+            if st == "VT":
+                stname="Vermont"
+                apst = "Vt."
+                stslug=slugify(stname)
+            if st == "VA":
+                stname="Virginia"
+                apst = "Va."
+                stslug=slugify(stname)
+            if st == "WA":
+                stname="Washington"
+                apst = "Wash."
+                stslug=slugify(stname)
+            if st == "WV":
+                stname="West Virginia"
+                apst = "W. Va."
+                stslug=slugify(stname)
+            if st == "WI":
+                stname="Wisconsin"
+                apst = "Wis."
+                stslug=slugify(stname)
+            if st == "WY":
+                stname="Wyoming"
+                apst = "Wyo."
+                stslug = slugify(stname)
+            s = StateEducationDepartment.objects.get(state__state_name=stname)
+            object.state_funded = s
+            object.save()
+            print object.state_funded
+        except:
+            print "Bork"

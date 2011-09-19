@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load comments %}
+{% load cache %}
+{% block title %}EdMoney Blog{% endblock %}
+{% block content %}
+{% cache 600 blogmain %}
+<div id="cont" class="blog">
+	<div id="width">
+	<h1 id="blog_logo" class="autoMargin"><img src="http://hottype.s3.amazonaws.com/edmoney/images/logo_384.png" alt="EdMoney.org" title="EdMoney.org" /></h1>
+	<div id="main">
+		<div class="padding">
+		{% for object in latest %}<div class="post">
+			<h2><a href="{{ object.get_absolute_url}}">{{ object.title }}</a></h2>
+			<div class="info">
+			<h4></h4>
+			<p>{{ object.publication_date|date:"N j, Y P" }}</p>
+			{% if object.author.photo %}<img src="{{ object.author.photo.url }}" width=76 height=76 alt="{{ object.author }}" />{% endif %}
+			<p class="timestamp">Posted by <a href="{{ object.author.get_absolute_url }}">{% autoescape off %}{{ object.author }}{% endautoescape %}</a></p>
+			</div>
+			<div class="content">
+				<p>{% autoescape off %}{{ object.body|truncatewords_html:150 }}{% endautoescape %}</p>
+			</div>
+			
+			<ul class="tools">
+				<li class="comment">{% get_comment_count for object as comment_count %}{{ comment_count }}</li>
+			</ul>
+			<div class="clear"></div>
+		</div>{% endfor %}
+		</div>
+	</div>
+{% include "includes/sidebar.html" %}
+</div>
+</div>
+{% endcache %}
+{% endblock %}

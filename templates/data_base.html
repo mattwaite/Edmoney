@@ -1,0 +1,73 @@
+<html>
+<head>
+<link rel="stylesheet" href="http://hottype.s3.amazonaws.com/edmoney/styles/reset.css" type="text/css" />
+<link rel="stylesheet" href="http://hottype.s3.amazonaws.com/edmoney/styles/edmoney_data.css" type="text/css" />
+<link rel="shortcut icon" href="http://hottype.s3.amazonaws.com/edmoney/images/favicon.ico" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script type="text/javascript"
+src="http://hottype.s3.amazonaws.com/edmoney/scripts/jquery.tinysort.1.4.1.min.js"></script>
+<script type="text/javascript" src="http://hottype.s3.amazonaws.com/edmoney/scripts/jquery.defaultvalue-1.0.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<!--<script type="text/javascript" src="http://hottype.s3.amazonaws.com/edmoney/fancybox/jquery.fancybox-1.3.1.pack.js"></script>-->
+<!--<script type="text/javascript" src="http://hottype.s3.amazonaws.com/edmoney/scripts/jquery.filestyle.js"></script>-->
+<!--<script type="text/javascript" src="http://hottype.s3.amazonaws.com/edmoney/scripts/jquery.autocomplete.js"></script>-->
+<script type="text/javascript" src="http://hottype.s3.amazonaws.com/edmoney/scripts/edmoney_data.js"></script>
+{% block googlemaps %}{% endblock %}
+<title>{% block title %}Edmoney.org Stimulus Data{% endblock %}</title>
+
+</head>
+<body>
+	<h1 id="logo" class="autoMargin"><img src="http://hottype.s3.amazonaws.com/edmoney/images/logo_384.png" alt="EdMoney.org" title="EdMoney.org" /></h1>
+	<div id="cont">
+	<div id="content">
+		<ul id="menu">
+			<a href="/"><li>Home</li></a>
+			<a href="/blog/"><li>Blog</li></a>
+			<a href="/data/schools/"><li class="active">Data</li></a>
+			<a href="/about/"><li>About us</li></a>
+			<a href="/contact/"><li>Contact</li></a>
+			<li class="search">
+                        {% if user.is_authenticated %}
+                        <p>Welcome, {{ user.username }}. <a href="/accounts/logout/">Log out.</a></p>
+                        {% else %}
+                        <p>Want to help out? <a href="/accounts/register/">Register</a> or <a href="/accounts/login/">log in</a>.</p>
+                        {% endif %}                        <!--Search-->
+			<!--<fieldset id="search">-->
+			<!--	<input type="text" />-->
+			<!--	<input type="button" id="search" value="Search" />-->
+			<!--</fieldset>-->
+                        
+			</li><div class="clear"></div>
+		</ul>
+{% block content %}{% endblock %}
+	</div>
+	</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-1596158-4");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<script type="text/javascript">
+$(document).ready(function(){
+   $('div.update').tsort({attr:'data-daterank', order:'desc'});
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#accordion').accordion({ 
+    header: 'h3', 
+    active: false, 
+    alwaysOpen: false, 
+    animated: false, 
+    clearStyle: true,
+    collapsible: true
+   })
+});
+</script>
+</body>
+</html>

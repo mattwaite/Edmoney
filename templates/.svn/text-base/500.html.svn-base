@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+	<div id="surface">
+		<h2><span class="blue">Oy. Something's really broken.</span> <span class="green">Don't worry, we've been notified and we'll be fixing it soon.</span></h2>
+	</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+	<div id="sidebar">
+	<div class="padding">
+		<div class="item">
+                {% if special_report.links %}
+			<h3>Other stories</h3>
+                        <ul>{% for object in special_report.links.all %}
+                            <li><a href="{{ object.link_url }}">{{ object.link_title }}</a></li>
+                        {% endfor %}</ul>
+                {% endif %}
+		</div>
+		<div class="item">
+			<h3>Follow us on Twitter</h3>
+                        <p>We're on Twitter at <a href="http://twitter.com/EWAedmoney">@EWAedmoney</a>.</p>
+                </div>
+
+{% if recent_posts %}                
+		<div class="item archives">
+			<h3>Recent posts</h3>
+			<ul>{% for object in recent_posts %}
+				<li><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></li>
+                            {% endfor %}
+			</ul>
+		</div>
+		<div class="item archives">
+			<h3>Archives</h3>
+                        <ul>
+                            <li><a href="/blog/2010/">Posts from 2010 by month</a></li>
+                        </ul>
+                </div>
+{% endif %}
+		<div class="item">
+			<h3>Contribute</h3>
+                        <p>Got an education stimulus link to share? Add it <a href="/contribute/links/">here</a>.</p>
+                </div>
+		<div class="item archives">
+			<h3>Sites we like</h3>
+			<ul>
+				<li><a href="http://www.edweek.org/ew/collections/schools-stimulus/index.html">Education Week – Stimulus and Schools</a></li>
+				<li><a href="http://www.newamerica.net/blog/ed_money_watch">New America Foundation's Ed Money Watch</a></li>
+				<li><a href="http://www.propublica.org/ion/stimulus">Eye on the Stimulus</a></li>
+				<li><a href="http://www.stimuluswatch.org/project/by_program/Schools">Stimulus Watch</a></li>
+				<li><a href="http://www.learningpt.org/recovery/">Education Coverage and Reinvestment Center</a></li>
+				<li><a href="http://www.educationcounsel.com/">Education Counsel</a></li>
+				<li><a href="http://www.ncef.org/school-modernization/">National Clearinghouse for Educational Facilities</a></li>
+				<li><a href="http://www.ascd.org/public_policy/Education_Stimulus_Resources.aspx">ASCD American Recovery and Reinvestment Act site</a></li>
+				<li><a href="http://www.ideamoneywatch.com/main/">IDEA Money Watch</a></li>
+			</ul>
+		<h3>Contact</h3>
+		<p>Email: 
+<script type = "text/javascript"> 
+user = 'lcrouch';
+site = 'ewa.org';
+document.write('<a href=\"mailto:' + user + '@' + site + '\">');
+document.write(user + ' AT ' + site + '</a>');
+</script></p>
+<h3>Feed</h3>
+<p><a href="/feeds/blog/">RSS</a></p>
+		</div>
+	</div>
+	</div>

@@ -1,0 +1,19 @@
+{% extends "profile_base.html" %}
+{% load humanize %}
+{% block title %}Our contributors{% endblock %}
+{% block content %}
+		<div id="breadcrumbs"><a href="/profiles/">Profiles</a></div>
+		<div id="main">
+			<div id="col1">
+			<h1>Contributors</h1>
+			</div>
+			<div id="col2">
+			</div>
+			<div class="clear"></div>
+			<div id="footer">
+				EdMoney is a project of the <a href="http://www.ewa.org/">Education Writers Association</a>. Development by <a href="http://www.hotttypeconsuling.com">HotType Consulting</a>. Web design by <a href="http://www.upstatement.com">Upstatement</a>
+			</div>
+		</div>
+	</div>
+	</div>
+{% endblock %}

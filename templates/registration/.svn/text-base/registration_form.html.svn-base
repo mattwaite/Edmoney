@@ -1,0 +1,39 @@
+{% extends "profile_base.html" %}
+{% load humanize %}
+{% load i18n %}
+{% block title %}Register{% endblock %}
+{% block content %}
+		<div id="breadcrumbs"><a href="/accounts/register/">Register</a></div>
+		<div id="main">
+			<div id="col1">
+			<h1>Register</h1>
+<div id="stats"></div>
+<h2>Step 1: Please create an account</h2>
+<div class="comment-form">
+<form method="post" action=".">
+<h3>Your account info</h3>
+<p>{{ form.username.errors }}<label for="id_username">Your user name*:</label>{{ form.username }}</p> 
+<p>{{ form.email.errors }}<label for="id_email">Your email address*:</label>{{ form.email }}</p> 
+<p>{{ form.password1.errors }}<label for="id_password1">Your password*:</label>{{ form.password1 }}</p>
+<p>{{ form.password2.errors }}<label for="id_password2">Confirm your password*:</label>{{ form.password2 }}</p>
+<h3>About you</h3>
+<p>{{ form.contributor_type.errors }}<label for="id_contributor_type">What kind of contributor are you?*:</label>{{ form.contributor_type }}</p> 
+<p>{{ form.name.errors }}<label for="id_name">Your name:</label>{{ form.name }}</p> 
+<p>{{ form.bio.errors }}<label for="id_bio">A little about you:</label>{{ form.bio }}</p> 
+<h3>Are you a journalist?</h3>
+<p>{{ form.journalist_employer.errors }}<label for="id_journalist_employer">Who do you work for?:</label>{{ form.journalist_employer }}</p> 
+<p>{{ form.journalist_employer_url.errors }}<label for="id_journalist_employer_url">A link to your employer or to your work:</label>{{ form.journalist_employer_url }}</p>
+<input type="submit" value="{% trans 'Submit' %}" />
+</form>
+</div>
+			</div>
+			<div id="col2">
+			</div>
+			<div class="clear"></div>
+			<div id="footer">
+				EdMoney is a project of the <a href="http://www.ewa.org/">Education Writers Association</a>. Development by <a href="http://www.hotttypeconsuling.com">HotType Consulting</a>. Web design by <a href="http://www.upstatement.com">Upstatement</a>
+			</div>
+		</div>
+	</div>
+	</div>
+{% endblock %}

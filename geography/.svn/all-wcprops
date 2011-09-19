@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/stimulustracker/!svn/ver/117/stimulustracker/geography
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/stimulustracker/!svn/ver/117/stimulustracker/geography/admin.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/stimulustracker/!svn/ver/1/stimulustracker/geography/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/stimulustracker/!svn/ver/1/stimulustracker/geography/__init__.py
+END
+tests.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/stimulustracker/!svn/ver/1/stimulustracker/geography/tests.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/stimulustracker/!svn/ver/116/stimulustracker/geography/models.py
+END

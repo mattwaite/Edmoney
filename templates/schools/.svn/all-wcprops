@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/stimulustracker/!svn/ver/137/stimulustracker/templates/schools
+END
+schools_main.html
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/stimulustracker/!svn/ver/99/stimulustracker/templates/schools/schools_main.html
+END
+state_detail.html
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/stimulustracker/!svn/ver/137/stimulustracker/templates/schools/state_detail.html
+END
+district_detail.html
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/stimulustracker/!svn/ver/137/stimulustracker/templates/schools/district_detail.html
+END
+school_detail.html
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/stimulustracker/!svn/ver/111/stimulustracker/templates/schools/school_detail.html
+END

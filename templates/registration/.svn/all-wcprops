@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/stimulustracker/!svn/ver/75/stimulustracker/templates/registration
+END
+password_change_done.html
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/stimulustracker/!svn/ver/50/stimulustracker/templates/registration/password_change_done.html
+END
+password_reset_confirm.html
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/stimulustracker/!svn/ver/50/stimulustracker/templates/registration/password_reset_confirm.html
+END
+activation_email.txt
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/stimulustracker/!svn/ver/50/stimulustracker/templates/registration/activation_email.txt
+END
+password_reset_form.html
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/stimulustracker/!svn/ver/50/stimulustracker/templates/registration/password_reset_form.html
+END
+activation_complete.html
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/stimulustracker/!svn/ver/62/stimulustracker/templates/registration/activation_complete.html
+END
+password_change_form.html
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/stimulustracker/!svn/ver/50/stimulustracker/templates/registration/password_change_form.html
+END
+password_reset_complete.html
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/stimulustracker/!svn/ver/50/stimulustracker/templates/registration/password_reset_complete.html
+END
+registration_form.html
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/stimulustracker/!svn/ver/75/stimulustracker/templates/registration/registration_form.html
+END
+activate.html
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/stimulustracker/!svn/ver/50/stimulustracker/templates/registration/activate.html
+END
+registration_complete.html
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/stimulustracker/!svn/ver/50/stimulustracker/templates/registration/registration_complete.html
+END
+activation_email_subject.txt
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/stimulustracker/!svn/ver/50/stimulustracker/templates/registration/activation_email_subject.txt
+END
+login.html
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/stimulustracker/!svn/ver/50/stimulustracker/templates/registration/login.html
+END
+password_reset_done.html
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/stimulustracker/!svn/ver/50/stimulustracker/templates/registration/password_reset_done.html
+END
+logout.html
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/stimulustracker/!svn/ver/50/stimulustracker/templates/registration/logout.html
+END
+password_reset_email.html
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/stimulustracker/!svn/ver/50/stimulustracker/templates/registration/password_reset_email.html
+END

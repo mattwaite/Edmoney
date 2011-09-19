@@ -1,0 +1,87 @@
+{% extends "data_base.html" %}
+{% load comments %}
+{% load humanize %}
+{% load cache %}
+{% block title %}EdMoney schools database{% endblock %}
+{% block content %}
+{% cache 600 schooldatamain %}
+		<div id="breadcrumbs"><a href="/data/">Main</a></div>
+		<div id="main" class="index">
+			<div id="stats">
+				<div class="stat">
+					<h5>${{ total_dollars.amount_awarded__sum|floatformat:0|intword }}</h5>
+					<h6>in stimulus dollars tracked*</h6>
+				</div>
+				<div class="stat">
+					<h5>{{ districts_tracked|intcomma }}</h5>
+					<h6>grants to school districts tracked*</h6>
+				</div>
+				<div class="stat">
+					<h5></h5>
+					<h6>* Tracked by Edmoney.org. Data is being updated.</h6>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div id="big_map">
+				<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+codebase=" http://fpdownload.adobe.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
+width="572" height="352" align="middle">
+ <param name="movie" value="http://hottype.s3.amazonaws.com/edmoney/swf/edmoneymap.swf">
+ <param name="allowScriptAccess" value="always">
+       <embed type="application/x-shockwave-flash"
+pluginspage="http://www.adobe.com/go/getflashplayer" width="550"
+height="330" align="middle"
+src="http://hottype.s3.amazonaws.com/edmoney/swf/edmoneymap.swf"
+allowScriptAccess="always"></embed>
+</object>
+			</div>
+			<div id="intro">
+				<h2>With EdMoney you can learn more about how funds from the economic stimulus are affecting education spending across the country.</h2>
+				<h2>You can search below for a state or district ...</h2>
+				<form action="" onsubmit="return false;">  
+                                <input type="text" id="search-value" value="">
+                                <input type="submit" id="search-button" value="Search">                                </form>
+				<h2>... or use the map to browse the different states.</h2>
+                                <div id="search-target"></div>
+			</div>
+			<div class="clear"></div>
+			<div id="footer">
+				EdMoney is a project of the <a href="http://www.ewa.org/">Education Writers Association</a>. Development by <a href="http://www.hotttypeconsuling.com">HotType Consulting</a>. Web design by <a href="http://www.upstatement.com">Upstatement</a>
+			</div>
+		</div>
+<script type="text/javascript">
+$('#search-value').bind('keypress', function(e) { 
+    if(e.keyCode==13){ 
+        var searchQuery = $('#search-value').attr('value'); 
+        var searchQuery = searchQuery.replace("'", "");
+        var searchQuery = searchQuery.replace(",", "");
+        var searchQuery = searchQuery.replace(";", "");
+        var searchQuery = searchQuery.replace("&", "");
+        var searchQuery = searchQuery.replace("  ", " ");
+        var searchQuery = searchQuery.replace("-", " ");
+        $('#results').show(); 
+        var searchResults = $.get('/search/?q='+searchQuery+'&models=schools.district&models=schools.stateeducationdepartment', function(data){
+            $('#search-target').html(data);
+        });
+    } 
+}); 
+$('#search-button').click(function(){ 
+    var searchQuery = $('#search-value').attr('value'); 
+    var searchQuery = searchQuery.replace("'", "");
+    var searchQuery = searchQuery.replace(",", "");
+    var searchQuery = searchQuery.replace(";", "");
+    var searchQuery = searchQuery.replace("&", "");
+    var searchQuery = searchQuery.replace("  ", " ");
+    var searchQuery = searchQuery.replace("-", " ");
+    $('#results').show(); 
+    var searchResults = $.get('/search/?q='+searchQuery+'&models=schools.district&models=schools.stateeducationdepartment', function(data){
+        $('#search-target').html(data);
+    }); 
+});
+</script>
+{% endcache %}
+{% endblock %}
+
+
+
+

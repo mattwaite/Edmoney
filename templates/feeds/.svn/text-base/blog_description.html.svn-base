@@ -1,0 +1,2 @@
+{% autoescape off %}<p>By {{ obj.author.first_name }} {{ obj.author.last_name }}</p>{% endautoescape %}
+{% autoescape off %}{{ obj.body }}{% endautoescape %}

@@ -1,0 +1,31 @@
+{% extends "data_base.html" %}
+{% load humanize %}
+
+{% block title %}Stimulus grant {{ award.arra_id }} to {{ award.recipient_name }}{% endblock %}
+{% block content %}
+		<!--<div id="breadcrumbs"><a href="/profiles/">Profiles</a></div>-->
+		<div id="main">
+			<div id="col1">
+                        <h1>{{ award.primary_award.clean_short_name }}</h1>
+                        <h2>{{ award.recipient_name }}</h2>
+                        <h2>Awarded: ${{ award.amount_awarded|intcomma }} | Spent: ${{ award.amount_disbursed|intcomma }}</h2>
+                        <div class="contribution">
+                        <h3>Award description from Edmoney.org</h3>
+                        {{ award.primary_award.clean_award_description|linebreaks }}
+                        <h3>Award description from recovery.gov</h3>
+                        {{ award.primary_award.award_description|linebreaks }}
+                        <h3>Jobs notes</h3>
+                        {{ award.jobs_created_description|linebreaks }}
+                        <p class="contributor"><strong>Source: <a href="http://www.recovery.gov">Recovery.gov</a></strong></p>
+                        </div>
+			</div>
+			<div id="col2">
+			</div>
+			<div class="clear"></div>
+			<div id="footer">
+				EdMoney is a project of the <a href="http://www.ewa.org/">Education Writers Association</a>. Development by <a href="http://www.hotttypeconsuling.com">HotType Consulting</a>. Web design by <a href="http://www.upstatement.com">Upstatement</a>
+			</div>
+		</div>
+	</div>
+	</div>
+{% endblock %}
