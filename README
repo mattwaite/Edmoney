@@ -1,0 +1,8 @@
+More documentation to come. 
+
+Requires:
+
+Geographic functionalities (PostGIS, Spatialite)
+django-registration
+django-profiles
+django-haystack
